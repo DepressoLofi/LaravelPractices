@@ -14,6 +14,12 @@ class ChatController extends Controller
         return ChatRoom::all();
     }
 
+    public function createChatRoom(Request $request){
+        $chatRoom = new ChatRoom;
+        $chatRoom->name = $request->name;
+        $chatRoom->save();
+    }
+
     public function messages(ChatRoom $room){
         return $room->messages()
         ->with('user')
